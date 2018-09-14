@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    min-width: 1000px;
+    background-color: #eeeeee;
+    height: 1000px;
+}
+
+ul li{
+     list-style-type: none;
+ }
+
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.fl{
+     float: left;
+ }
+
+ .fr{
+     float: right;
+ }
+
+ .topNav {
+     height: 28px;
+     background: #1e1b29;
+ }
+
+ .topNav li{
+     color: #ffffff;
+     font-size: 12px;
+     line-height: 28px;
+     float: left;
+     margin: 0 15px;
+ }
+
+ .mainNav{
+     height: 80px;
+     background-color: rgba(255,255,255,.9);
+ }
+
+/*加上这个，中间的元素就能保证响应的居中了！*/
+.laymid{
+    margin: 0 auto;
+    width: 990px;
+    height: 80px;
+}
+
+ .alipay-logo{
+     /*float会让元素变成行内块级元素，不然这个alipay就占据一行了*/
+     float: left;
+     width: 114px;
+     height: 40px;
+     background-image: url(https://t.alipayobjects.com/images/T1HHFgXXVeXXXXXXXX.png);
+     /*这个图片的垂直居中，使用relative定位的，的确省事*/
+     position: relative;
+     left: 0;
+     top: 20px;
+ }
+
+ .mainMenu{
+     float: left;
+     margin-left: 260px;
+ }
+
+ .mainMenu li {
+     padding: 0 25px;
+     height: 80px;
+     line-height: 80px;
+     float: left;
+ }
+
