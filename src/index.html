@@ -4,40 +4,184 @@
     <meta charset="UTF-8">
     <title>支付宝</title>
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/iconfont/iconfont.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
 
-    <!--顶部-->
-    <div class="header">
-        <nav class="topNav">
-            <ul class="fl">
-                <li>个人</li>
-                <li>企业</li>
-                <li>合作伙伴</li>
-            </ul>
-            <ul class="fr">
-                <li>支付宝App</li>
-                <li>客户服务</li>
-            </ul>
-        </nav>
-        <nav class="mainNav">
-            <div class="laymid">
-                <div class="alipay-logo"></div>
-                <div class="mainMenu">
-                    <ul>
-                        <li>首页</li>
-                        <li>财富中心</li>
-                        <li>安全保障</li>
-                        <li>商家中心</li>
-                        <li>开放平台</li>
+    <div class="container">
+        <!--顶部-->
+        <header class="header">
+            <nav class="topNav">
+                <!--必须要有个990px的东西包裹起来，横向滚动的时候才不会错位-->
+                <!--不然min-width不生效-->
+                <!--而且这个框，margin 0 auto ，在窗口宽度小于990px的时候，刚好可以不会错位-->
+                <div class="laymid1">
+                    <ul class="fl">
+                        <li>个人</li>
+                        <li>企业</li>
+                        <li>合作伙伴</li>
+                    </ul>
+                    <ul class="fr">
+                        <li>支付宝App</li>
+                        <li>客户服务</li>
                     </ul>
                 </div>
+            </nav>
+            <nav class="mainNav">
+                <div class="laymid2">
+                    <div class="alipay-logo"></div>
+                    <div class="mainMenu">
+                        <ul>
+                            <li>首页</li>
+                            <li>财富中心</li>
+                            <li>安全保障</li>
+                            <li>商家中心</li>
+                            <li>开放平台</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!--主体部分-->
+        <div class="am-body">
+
+            <div class="next" id="next">
+                <span class="iconfont">&#xe600;</span>
             </div>
-        </nav>
+
+            <div class="am-page am-movie">
+                <div class="movie-player">
+                    <!--Chrome视频无法显示！j加了muted可以了-->
+                    <video muted poster="https://i.alipayobjects.com/i/ecmng/png/201501/4Jdkug9K2v.png" height="1080" width="1920"
+                           autoplay loop>
+                        <source src="https://t.alipayobjects.com/images/T1T78eXapfXXXXXXXX.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="movie-mask"></div>
+                <div class="logo"></div>
+            </div>
+
+            <!--一个section是一个背景图+内容-->
+
+            <!--页面到达某个位置后，才让某部分的文字和动画显示！-->
+            <div class="am-page am-one">
+                <div class="am-bg"></div>
+                <div class="main-content">
+                    <img src="https://i.alipayobjects.com/i/ecmng/png/201501/4JdlKWNmB3.png" class="words">
+                    <img src="https://t.alipayobjects.com/images/T1GDtfXeRcXXXXXXXX.png" class="person">
+                </div>
+            </div>
+            <div class="am-page am-two">
+                <div class="am-bg"></div>
+                <div class="main-content">
+                    <img src="https://t.alipayobjects.com/images/T148deXkVlXXXXXXXX.png" class="words">
+                    <img src="https://t.alipayobjects.com/images/T1zABeXkxsXXXXXXXX.png" class="up">
+                    <img src="https://t.alipayobjects.com/images/T1PQteXadyXXXXXXXX.png" class="down">
+                </div>
+            </div>
+            <div class="am-page am-three">
+                <div class="am-bg"></div>
+                <div class="main-content">
+                    <img src="https://t.alipayobjects.com/images/T14uXfXdBXXXXXXXXX.png" class="words">
+                </div>
+            </div>
+            <div class="am-page am-four">
+                <div class="am-bg"></div>
+                <div class="main-content">
+                    <img src="https://gw.alipayobjects.com/zos/rmsportal/ImeNGHgRUfwicrSWURzM.png" class="words">
+                </div>
+                <!--在这加一个回到顶部-->
+                <div id="toTop">
+                    顶部
+                </div>
+            </div>
+        </div>
+
+        <footer>
+        </footer>
     </div>
 
-    <!--主体部分-->
+
+    <script>
+        // 获取html
+        var html = document.documentElement;
+        // 获取body body是html的第二个元素
+        var body = html.children[1];
+
+        // 窗口高度
+        // 不要这样获取！这样只能获得第一次的高度，如果后面缩放就完了
+        // var distance = window.innerHeight;
+        // console.log(distance);
+
+        var next = document.getElementById('next');
+        var toTop = document.getElementById('toTop');
+
+        var words = document.getElementsByClassName('words');
+
+        var pages = document.getElementsByClassName('am-page');
+
+        //去校y轴的滑动条！强啊！
+        html.style.overflowY = 'hidden';
+
+        //scroll事件是无法阻止的，只能阻止滚轮事件的默认值
+        body.addEventListener('mousewheel',(e)=>{
+            e.preventDefault();
+        });
+
+        // 移动到的位置
+        var count = 0;
+
+        body.addEventListener('keydown',(e)=>{
 
 
+            //向下，就滚动到当前位置+窗口高度
+            if(e && e.keyCode === 40){
+                e.preventDefault();
+                let temp = html.scrollTop;
+                console.log(temp);
+                console.log(window.innerHeight);
+                window.scrollTo(0,temp+window.innerHeight);
+                count++;
+                // 显示下一个section
+                pages[count].style.display = 'block';
+                //显示文字动画
+                words[count-1].style.display = 'block';
+                // 为了消除最底部之后，还有向下的按钮
+                if (count===4){
+                    next.style.display='none';
+                }
+            }
+        });
+
+        // 鼠标点击向下按钮
+        next.addEventListener('click',(e)=>{
+            e.preventDefault();
+            let temp = html.scrollTop;
+            console.log(temp);
+            window.scrollTo(0,temp+window.innerHeight);
+            count++;
+            if (count===4){
+                next.style.display='none';
+            }
+            // 显示下一个section
+            pages[count].style.display = 'block';
+            //显示文字动画
+            words[count-1].style.display = 'block';
+        });
+
+        //这样从新返回顶部，动画的特效还能再次出现！
+        toTop.addEventListener('click',(e)=>{
+            window.scrollTo(0,0);
+            count = 0;
+            next.style.display='block';
+            for(item of pages){
+                item.style.display = 'none';
+            }
+            pages[0].style.display = 'block';
+        });
+
+    </script>
 </body>
 </html>
