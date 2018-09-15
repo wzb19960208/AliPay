@@ -5,7 +5,7 @@
     <title>支付宝</title>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/iconfont/iconfont.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
 </head>
 <body>
 
@@ -124,6 +124,7 @@
 
         //去校y轴的滑动条！强啊！
         html.style.overflowY = 'hidden';
+        html.style.overflowX = 'hidden';
 
         //scroll事件是无法阻止的，只能阻止滚轮事件的默认值
         body.addEventListener('mousewheel',(e)=>{
